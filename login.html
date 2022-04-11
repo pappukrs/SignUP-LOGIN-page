@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN PAGE</title>
+    <style>
+
+      body{
+            background-color:red;
+            font-family:sans-serif;
+        }
+        h1{
+            text-align: center;
+            border:3px solid red;
+            background-color: black;
+            margin-left:450px;
+            margin-right:400px;
+            padding:40px;
+            color:white;
+        }
+        #loginStyle{
+            background-color: black;
+            margin-left:450px;
+            margin-right:400px;
+            padding:40px;
+            color:white;
+        }
+        #login{
+            display:flex;
+            flex-direction: column;
+            gap:8px;
+            margin:auto;
+            width:400px;
+            background-color:black;
+        }
+        #login>input{
+            width:100%;
+            height:40px;
+             border-radius: 30px;
+             border:1px solid pink;
+             padding:20px;
+        }
+
+        #login>#loginBtn{
+            width:100%;
+            height:auto;
+            background-color:blue;
+            color:white;
+            font-size:30px;
+            padding:15px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>This is login page</h1>
+ <div id="loginStyle">
+    <form id="login">
+        <input type="email" required placeholder="Enter Email" id="mail"/>
+        <input type="password" required placeholder="Enter password" id="password">
+        <input type="submit" value="LOGIN" id="loginBtn"/>
+    </form>
+</div>
+
+</body>
+<script>
+   document.querySelector("#login").addEventListener("submit",login)
+
+   var registeredUsers=JSON.parse(localStorage.getItem("userinfo"));
+       console.log(registeredUsers);
+   function login(){
+       event.preventDefault();
+
+       
+
+       var enteredmail=document.querySelector("#mail").value;
+       var enteredpass=document.querySelector("#password").value;
+
+       registeredUsers.forEach((userData)=>{
+        if(enteredmail==userData.email && enteredpass==userData.password){
+           alert("login successful");
+           window.location.href="./men.html";
+        //    break;
+       }
+       else{
+           alert("enter valid credential");
+        //    break;
+       }
+       });
+      
+   }
+</script>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGNUP PAGE</title>
+    <style>
+        body{
+            background-color:red;
+            font-family: sans-serif;
+        }
+
+        h1{
+            text-align: center;
+            border:3px solid red;
+            background-color: black;
+            margin-left:450px;
+            margin-right:400px;
+            padding:40px;
+            color:white;
+        }
+        #formStyle{
+            background-color: black;
+            margin-left:450px;
+            margin-right:400px;
+            padding:40px;
+            color:white;
+         
+        }
+        #form{
+            display:flex;
+            flex-direction:column;
+            gap:9px;
+           
+            width:400px;
+            height:auto;
+           
+        }
+
+        #form>input{
+            width:100%;
+            height:40px;
+             border-radius: 30px;
+             border:1px solid pink;
+             padding:20px;
+        }
+
+        #form>#signup{
+            width:100%;
+            height:auto;
+            background-color:blue;
+            color:white;
+            font-size:30px;
+            padding:15px;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>This is signup page</h1>
+
+<div id="formStyle">
+    <form id="form">
+        <input type="email" required placeholder="Enter Email" id="email"/>
+        <input type="phone" required placeholder="Enter mobile number" id="phone"/>
+        <input type="password" required placeholder="Enter password" id="pass" />
+        <input type="submit"  value="SIGNUP" id="signup"/>
+    </form>
+</div>
+</body>
+
+<script>
+document.querySelector('#form').addEventListener('submit',addInfo);
+var arr;
+if(localStorage.getItem('userinfo')===null){
+    arr=[];
+}
+else{
+    arr=JSON.parse(localStorage.getItem('userinfo'));
+}
+
+function addInfo(){
+    event.preventDefault();
+   
+    var mail=document.querySelector('#email').value;
+    var mobile=document.querySelector('#phone').value;
+    var pass=document.querySelector('#pass').value;
+    var obj={
+        email:mail,
+        phone:mobile,
+        password:pass,
+    }
+    arr.push(obj);
+    // console.log(arr);
+
+
+    localStorage.setItem("userinfo",JSON.stringify(arr));
+    window.location.href='login.html';
+}
+
+</script>
+</html>
